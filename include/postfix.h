@@ -7,3 +7,4 @@
 std::string infix2prefix(std::string infix);
 
 #endif  // INCLUDE_POSTFIX_H_
+
