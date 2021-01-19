@@ -1,9 +1,10 @@
+// Copyright 2020 Konina Tatiana
 #include "MyStack.h"
 #include "postfix.h"
 #include <map>
 #include <string>
 
-std::string infix2prefix(std::string infix) {
+std::string infix2postfix(std::string infix) {
   std::map<char, int> priority = { {'(', 0}, {')', 1}, {'+', 2},
                                  {'-', 2}, {'*', 3}, {'/', 3} };
   std::string all_operations = "+-*/";
@@ -13,14 +14,13 @@ std::string infix2prefix(std::string infix) {
     if (infix[i] == ' ')
       continue;
     if (all_operations.find(infix[i]) != std::string::npos) {
-      if (operations.isEmpty() || operations.get() == '(' ) {
+      if (operations.isEmpty() || operations.get() == '(') {
         operations.push(infix[i]);
-      }
-      else if (priority[infix[i]] > priority[operations.get()]) {
+      } else if (priority[infix[i]] > priority[operations.get()]) {
         operations.push(infix[i]);
-      }
-      else {
-        while (!(operations.isEmpty())  && ( priority[operations.get()] >= priority[infix[i]]  )) {
+      } else {
+        while (!(operations.isEmpty())  &&
+               (priority[operations.get()] >= priority[infix[i]])) {
           if (operations.get() == ')') break;
           out += operations.get();
           out += ' ';
@@ -28,19 +28,16 @@ std::string infix2prefix(std::string infix) {
         }
         operations.push(infix[i]);
       }
-    }
-    else if (infix[i] == '(') {
+    } else if (infix[i] == '(') {
       operations.push(infix[i]);
-    }
-    else if (infix[i] == ')') {
+    } else if (infix[i] == ')') {
       while (operations.get() != '(') {
         out += operations.get();
         out += ' ';
         operations.pop();
       }
       operations.pop();
-    }
-    else {
+    } else {
       out += infix[i];
       out += ' ';
     }
