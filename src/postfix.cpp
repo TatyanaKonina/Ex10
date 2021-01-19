@@ -39,7 +39,8 @@ std::string infix2postfix(std::string infix) {
       operations.pop();
     } else {
       out += infix[i];
-      if (!((i + 1 <= infix.size() && (isdigit(infix[i + 1]) || infix[i + 1] == '.')))) {
+      if (!((i + 1 <= infix.size() &&
+         (isdigit(infix[i + 1]) || infix[i + 1] == '.')))) {
         out += ' ';
       }
     }
