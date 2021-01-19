@@ -2,7 +2,6 @@
 #include "MyStack.h"
 #include "postfix.h"
 #include <iostream>
-#include <stdlib.h>
 
 int main() {
   std::string s1("2 + 2");
