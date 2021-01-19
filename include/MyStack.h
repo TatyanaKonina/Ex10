@@ -4,12 +4,12 @@
 #include <iostream>
 template <typename T>
 class MyStack {
-private:
-  T* stackPtr;  // указатель на стек
-  int size;  // размер стека
-  int top;  // вершина стека
+ private:
+  T* stackPtr;
+  int size;
+  int top;
 
-public:
+ public:
   explicit MyStack(int size) : top(-1) {
     this->stackPtr = new T[size];
     this->size = size;
@@ -36,18 +36,16 @@ public:
   }
   bool push(const T value) {
     if (top == size - 1)
-      return false;  // стек полон
-    stackPtr[++top] = value;  // помещаем элемент в стек
+      return false;
+    stackPtr[++top] = value;
     return true;
   }
-  // поместить элемент в стек
   bool pop() {
     if (top == -1)
-      return false;  // стек пуст
-    stackPtr[top--] = 0;  // удаляем элемент из стека
-    return true;  // успешное выполнение операции
+      return false;
+    stackPtr[top--] = 0;
+    return true;
   }
-  // удалить из стека элемент
   bool isFull() const {
     return top == size - 1;
   }
