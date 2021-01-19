@@ -1,7 +1,8 @@
 // Copyright 2020 Konina Tatiana
+#include <iostream>
 #include "MyStack.h"
 #include "postfix.h"
-#include <iostream>
+
 
 int main() {
   std::string s1("2 + 2");
